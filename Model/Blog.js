@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-BlogSchema = new Schema({
+const BlogSchema = new Schema({
   tittle: {
     type: String,
     required: true

@@ -1,5 +1,8 @@
 import express from "express"
+import { getAllBlogs } from "../Controllers/BlogController.js";
 
-const router= express.Router();
+const BlogRouter= express.Router();
 
-router.get("", );
+BlogRouter.get("/", getAllBlogs);
+
+export default BlogRouter;

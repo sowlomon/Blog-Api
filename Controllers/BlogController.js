@@ -18,6 +18,7 @@ export const getAllBlogs = async(req, res, next) => {
   return res.status(200).json({ allBlogs});
 };
 
+
 export const addBlog = async ( req, res, next) => {
   const {tittle, description, image, user} = req.body;
 
@@ -114,4 +115,23 @@ export const deleteBlog = async(req, res, next) => {
   return res.status(200).json({ message: "Blog deleted Successfully" });
 };
 
+export const getBlogs = async (req, res, next) => {
+  const userId = req.params.id;
+  let userBlogs;
+  try {
+
+    userBlogs = await Blog.find(userId).populate("blog");
+
+  }catch(err) {
+
+    return console.log(err);
+
+  };
+
+  if(!userBlogs) {
+    return res.status(404).json({message: "Blog was not FOUND!"});
+  };
+
+  return res.status(200).json({blogs : userBlogs});
+};
 
